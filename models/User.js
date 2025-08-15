@@ -26,9 +26,11 @@ const userSchema = new mongoose.Schema(
       required: true,
       select: false,
     },
-    socketId: {
-      type: String,
-    },
+    profileImage: { type: String, default: null },
+    profileImagePublicId: { type: String, default: null },
+    resetPasswordToken: { type: String, select: false },
+    resetPasswordExpires: { type: Date, select: false },
+    socketId: { type: String },
   },
   {
     timestamps: true,

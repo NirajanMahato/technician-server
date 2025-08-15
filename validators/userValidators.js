@@ -31,3 +31,18 @@ exports.registerValidator = [
     .isLength({ min: 6 })
     .withMessage("Password must be at least 6 characters long"),
 ];
+
+exports.loginValidator = [
+  body("email")
+    .trim()
+    .notEmpty().withMessage("Email is required")
+    .isEmail().withMessage("Please enter a valid email"),
+  body("password")
+    .notEmpty().withMessage("Password is required")
+    .isLength({ min: 6 }).withMessage("Password must be at least 6 characters"),
+];
+
+exports.googleLoginValidator = [
+  body("idToken")
+    .notEmpty().withMessage("Google idToken is required"),
+];

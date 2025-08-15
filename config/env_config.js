@@ -25,6 +25,23 @@ const envConfig = {
   EMAIL_USER: process.env.EMAIL_USER || "",
   EMAIL_PASS: process.env.EMAIL_PASS || "",
 
+  // Google OAuth Configuration
+  GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID || "",
+  GOOGLE_CLIENT_SECRET: process.env.GOOGLE_CLIENT_SECRET || "",
+  GOOGLE_PROJECT_ID: process.env.GOOGLE_PROJECT_ID || "",
+  GOOGLE_AUTH_URI: process.env.GOOGLE_AUTH_URI || "",
+  GOOGLE_TOKEN_URI: process.env.GOOGLE_TOKEN_URI || "",
+  GOOGLE_AUTH_PROVIDER_X509_CERT_URL:
+    process.env.GOOGLE_AUTH_PROVIDER_X509_CERT_URL || "",
+  GOOGLE_JAVASCRIPT_ORIGINS: process.env.GOOGLE_JAVASCRIPT_ORIGINS
+    ? JSON.parse(process.env.GOOGLE_JAVASCRIPT_ORIGINS)
+    : ["http://localhost:3000", "http://localhost:8081"],
+
+  // Cloudinary Configuration
+  CLOUDINARY_CLOUD_NAME: process.env.CLOUDINARY_CLOUD_NAME || "",
+  CLOUDINARY_API_KEY: process.env.CLOUDINARY_API_KEY || "",
+  CLOUDINARY_API_SECRET: process.env.CLOUDINARY_API_SECRET || "",
+
   // File Upload Configuration
   MAX_FILE_SIZE: process.env.MAX_FILE_SIZE || 5 * 1024 * 1024, // 5MB
 
@@ -37,7 +54,6 @@ const envConfig = {
   // Security
   SESSION_SECRET:
     process.env.SESSION_SECRET || "your-session-secret-change-in-production",
-
 };
 
 // Validate required environment variables

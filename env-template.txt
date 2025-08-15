@@ -21,9 +21,22 @@ EMAIL_PORT=587
 EMAIL_USER=your-email@gmail.com
 EMAIL_PASS=your-app-password
 
+# Google OAuth Configuration
+GOOGLE_CLIENT_ID=your-google-client-id
+GOOGLE_CLIENT_SECRET=your-google-client-secret
+GOOGLE_PROJECT_ID=your-google-project-id
+GOOGLE_AUTH_URI=https://accounts.google.com/o/oauth2/auth
+GOOGLE_TOKEN_URI=https://oauth2.googleapis.com/token
+GOOGLE_AUTH_PROVIDER_X509_CERT_URL=https://www.googleapis.com/oauth2/v1/certs
+GOOGLE_JAVASCRIPT_ORIGINS='["http://localhost:3000", "http://localhost:8081"]'
+
+# Cloudinary Configuration
+CLOUDINARY_CLOUD_NAME=your-cloudinary-cloud-name
+CLOUDINARY_API_KEY=your-cloudinary-api-key
+CLOUDINARY_API_SECRET=your-cloudinary-api-secret
+
 # File Upload Configuration
 MAX_FILE_SIZE=5242880
-UPLOAD_PATH=uploads/
 
 # Rate Limiting
 RATE_LIMIT_WINDOW_MS=900000
@@ -33,9 +46,3 @@ BURST_LIMIT_MAX_REQUESTS=10
 
 # Security
 SESSION_SECRET=your-session-secret-change-in-production
-
-# Logging
-LOG_LEVEL=info
-
-# Timezone
-TIMEZONE=UTC

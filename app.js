@@ -40,7 +40,7 @@ app.get("/health", (req, res) => {
 });
 
 //routes
-app.use("/api/v1/users", userRoutes);
+app.use("/api/v1/user", userRoutes);
 
 app.use((err, req, res, next) => {
   console.error("Error:", err);
