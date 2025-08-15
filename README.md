@@ -9,7 +9,7 @@
 1. **Clone the repository**
 
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/NirajanMahato/technician-server
    cd technician-server
    ```
 
@@ -20,59 +20,25 @@
    ```
 
 3. **Environment Setup**
-   Create a `.env` file in the root directory:
+   Create a `.env` file in the root directory and copy the contents from `env-template.txt`:
 
-   ```env
-   # Server Configuration
-   NODE_ENV=development
-   PORT=5000
-
-   # Database Configuration
-   MONGODB_URI=mongodb://localhost:27017/technician_booking
-
-   # Frontend URLs (for CORS)
-   FRONTEND_URL=http://localhost:3000
-   REACT_NATIVE_URL=http://localhost:8081
-
-   # JWT Configuration
-   JWT_SECRET=your-super-secret-jwt-key-change-in-production
-   JWT_EXPIRE=7d
-   JWT_COOKIE_EXPIRE=7
-
-   # Email Configuration (for notifications)
-   EMAIL_HOST=smtp.gmail.com
-   EMAIL_PORT=587
-   EMAIL_USER=your-email@gmail.com
-   EMAIL_PASS=your-app-password
-
-   # File Upload Configuration
-   MAX_FILE_SIZE=5242880
-   UPLOAD_PATH=uploads/
-
-   # Rate Limiting
-   RATE_LIMIT_WINDOW_MS=900000
-   RATE_LIMIT_MAX_REQUESTS=100
-   BURST_LIMIT_WINDOW_MS=1000
-   BURST_LIMIT_MAX_REQUESTS=10
-
-   # Security
-   SESSION_SECRET=your-session-secret-change-in-production
-
-   # Logging
-   LOG_LEVEL=info
-
-   # Timezone
-   TIMEZONE=UTC
+   ```bash
+   cp env-template.txt .env
    ```
+
+   Then update the `.env` file with your actual configuration values for:
+
+   - MongoDB connection string
+   - JWT secret
+   - Email credentials
+   - Google OAuth credentials
+   - Cloudinary credentials
 
 4. **Start the server**
 
    ```bash
    # Development mode
    npm run dev
-
-   # Production mode
-   npm start
    ```
 
 ## API Endpoints
@@ -81,35 +47,21 @@
 
 - `GET /health` - Server health status
 
-### Root
+### Authentication Endpoints
 
-- `GET /` - API information
+- `POST /api/v1/users/register` - Register a new user
+- `POST /api/v1/users/login` - Login with email and password
+- `POST /api/v1/users/google` - Login with Google OAuth
+
+### User Profile Endpoints
+
+- `GET /api/v1/users/profile` - Get user profile (requires authentication)
+- `POST /api/v1/users/upload-profile-image` - Upload profile image to Cloudinary (requires authentication)
+- `PUT /api/v1/users/update-profile-image` - Update existing profile image (requires authentication)
 
 ### API Base URL
 
-- All API endpoints will be prefixed with `/api/v1`
-
-## Security Features
-
-### CORS Configuration
-
-- Configurable allowed origins
-- Support for both web and React Native
-- Development mode allows localhost variations
-
-### Rate Limiting
-
-- General rate limiting: 100 requests per 15 minutes
-- Burst limiting: 10 requests per second
-- Authentication rate limiting: 5 attempts per 15 minutes
-
-### Security Headers
-
-- Helmet.js for security headers
-- Custom security headers
-- Content Security Policy (CSP)
-- XSS protection
-- Frame options
+- All API endpoints are prefixed with `/api/v1`
 
 ## Development
 
@@ -122,12 +74,3 @@
 ### Environment Variables
 
 All configuration is handled through environment variables. See the `.env` example above for all available options.
-
-## Production Deployment
-
-1. Set `NODE_ENV=production`
-2. Use a strong `JWT_SECRET`
-3. Configure proper CORS origins
-4. Set up MongoDB connection string
-5. Configure email settings
-6. Set up proper logging
